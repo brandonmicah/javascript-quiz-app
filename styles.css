@@ -82,7 +82,7 @@ select {
 .grid-container {
   display: grid;
   grid-template-columns: repeat(2, 200px);
-  gap: 1rem;
+  gap: 2rem;
 }
 
 .option {
@@ -99,6 +99,7 @@ select {
   width: 416px;
   margin: auto;
   text-align: center;
+  margin-top: 1rem;
 }
 
 .check-btn {
@@ -129,4 +130,8 @@ select {
   font-size: 14px;
   width: 416px;
   text-align: center;
+}
+
+.selected {
+  background-color: lime;
 }
