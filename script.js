@@ -15,6 +15,7 @@ const option1 = document.querySelector(".grid-item-1");
 const option2 = document.querySelector(".grid-item-2");
 const option3 = document.querySelector(".grid-item-3");
 const option4 = document.querySelector(".grid-item-4");
+const scoreDisplay = document.querySelector(".score");
 
 // Define an array of objects that contain the quiz questions, answer choices, and correct answer.
 const queArr = [
@@ -47,7 +48,7 @@ const queArr = [
 
 const randomNum4 = () => Math.floor(Math.random() * 4 + 1);
 
-const randomNum5 = () => Math.floor(Math.random() * queArr.length);
+const randomNum5 = () => Math.floor(Math.random() * (queArr.length - 1));
 
 let randomIndex;
 // Write a function to display the questions and answer choices from the array onto the webpage.
@@ -90,13 +91,17 @@ newQuestion();
 //   })
 
 let answer;
-
+let liveScore = 0;
 window.addEventListener("click", function (e) {
   answer = e.target.innerHTML;
   if (Number(answer) === queArr[randomIndex].answer) {
-    console.log("Correct!");
+    queArr.splice(randomIndex, 1);
+    liveScore++;
+    console.log("Correct 😀");
+    scoreDisplay.innerHTML = liveScore;
+    newQuestion();
+  } else {
     queArr.splice(randomIndex, 1);
     newQuestion();
-  } else console.log("Wrong");
-  console.log(queArr[randomIndex].answer);
+  }
 });
