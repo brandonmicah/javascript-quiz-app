@@ -117,3 +117,16 @@ select {
   border-radius: 5px;
   padding: 2px 5px;
 }
+
+.questions {
+  border: 2px solid black;
+  margin: 1rem 0;
+  padding: 3px 0;
+  border-radius: 5px;
+}
+
+.questions p {
+  font-size: 14px;
+  width: 416px;
+  text-align: center;
+}
