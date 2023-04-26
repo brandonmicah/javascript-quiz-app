@@ -135,3 +135,7 @@ select {
 .selected {
   background-color: lime;
 }
+
+.check {
+  font-size: 3rem;
+}

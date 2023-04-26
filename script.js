@@ -1,11 +1,5 @@
 "use strict";
 
-/* Define an array of objects that contain the quiz questions, answer choices, and correct answer.
-Write a function to display the questions and answer choices from the array onto the webpage.
-Write a function to check the user's answer and display the result.
-Write a function to keep track of the user's score.
-*/
-
 // Dom access
 const questionDisplay = document.querySelector(".question");
 const answerOption = document.querySelector(".option");
@@ -16,7 +10,7 @@ const option2 = document.querySelector(".grid-item-2");
 const option3 = document.querySelector(".grid-item-3");
 const option4 = document.querySelector(".grid-item-4");
 const scoreDisplay = document.querySelector(".score");
-
+const check = document.querySelector(".check");
 // Define an array of objects that contain the quiz questions, answer choices, and correct answer.
 const queArr = [
   {
@@ -30,8 +24,8 @@ const queArr = [
     options: [3, 4, 5, 6],
   },
   {
-    question: " 2 + 3 ?",
-    answer: 5,
+    question: " 2 + 1 ?",
+    answer: 3,
     options: [3, 4, 5, 6],
   },
   {
@@ -84,12 +78,6 @@ function newQuestion() {
 }
 newQuestion();
 
-// // Highlight the chosen option
-// document.querySelectorAll(".option").forEach((option, i) =>
-//   addEventListener("click", function () {
-//     eval(option + i).classList.add("selected");
-//   })
-
 let answer;
 let liveScore = 0;
 window.addEventListener("click", function (e) {
@@ -97,11 +85,16 @@ window.addEventListener("click", function (e) {
   if (Number(answer) === queArr[randomIndex].answer) {
     queArr.splice(randomIndex, 1);
     liveScore++;
-    console.log("Correct 😀");
+    check.innerHTML = "Correct!......next question";
     scoreDisplay.innerHTML = liveScore;
     newQuestion();
   } else {
     queArr.splice(randomIndex, 1);
+    check.innerHTML = `Ooops!......it was ${answer}`;
     newQuestion();
   }
 });
+
+if (queArr.length === 0) {
+  console.log("Game Over!");
+}
